@@ -1,0 +1,46 @@
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 300px;
+    .logo{
+      height: 100%;
+      width: 70px;
+      height: 70px;
+      align-self: center;
+    }
+    p{
+      align-self: center;
+    }
+    &:hover{
+      font-weight: 600;
+      color: black;
+    }
+  }
+
+  .options {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    padding: 0px 0px;
+    justify-content: flex-end;
+    border-bottom: solid 1px;
+  
+    .option {
+      padding: 10px 15px;
+      cursor: pointer;
+
+      &:hover{
+        font-weight: 600;
+        color: black;
+      }
+    }
+  }
+}
