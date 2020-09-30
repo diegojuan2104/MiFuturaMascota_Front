@@ -1,19 +1,55 @@
 .box {
-  margin: 35px;
+  margin: 0px 35px;
   display: flex;
   justify-content: center;
 
   .login-form {
     width: 380px;
     display: flex;
+    justify-content: center;
     flex-direction: column;
 
-    .title {
-      margin: 10px 0;
+    h4 {
+      align-self: center;
+    }
+    img {
+      align-self: center;
+      margin: 0px;
+      max-height: 70px;
     }
 
-    .button{
-      justify-content: center;
+    .form-fields {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .input-box {
+        min-width: 200px;
+
+        .form-control {
+          width: 100%;
+          font-size: 18px;
+        }
+      }
+    }
+    .button-box {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      button{
+        background-color: #000;
+        color: #FFF;
+        min-width: 200px;
+      }
+      a{
+        align-self: center;
+        font-size: 17px;
+        &:hover{
+          font-weight: 600;
+          color: #000;
+        }
+      }
     }
   }
 }
