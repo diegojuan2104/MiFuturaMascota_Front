@@ -2,6 +2,7 @@
   margin: 0px 35px;
   display: flex;
   justify-content: center;
+  font-size: 16.5px;
 
   .login-form {
     width: 380px;
@@ -11,11 +12,12 @@
 
     h4 {
       align-self: center;
+      font-size: 25px;
     }
-
-
+    
     img {
       align-self: center;
+      margin: 0px;
       max-height: 70px;
     }
 
@@ -29,7 +31,7 @@
 
         .form-control {
           width: 100%;
-          font-size: 18px;
+          font-size: 16.5px;
         }
       }
     }
@@ -42,14 +44,6 @@
         background-color: #000;
         color: #FFF;
         min-width: 200px;
-      }
-      a{
-        align-self: center;
-        font-size: 17px;
-        &:hover{
-          font-weight: 600;
-          color: #000;
-        }
       }
     }
   }
