@@ -100,7 +100,7 @@ const PerfilPage = () => {
                     </div>
 
                     <div className="input-box">
-                        <label htmlFor="">Nombre(s) Actual<span>*</span></label>
+                        <label htmlFor="">Nombre(s)<span>*</span></label>
                         <input
                             type="text"
                             placeholder="Ingresa tu nuevo nombre"
@@ -111,7 +111,7 @@ const PerfilPage = () => {
                         />
                     </div>
                     <div className="input-box">
-                        <label htmlFor="">Apellido(s)  Actual<span>*</span></label>
+                        <label htmlFor="">Apellido(s)<span>*</span></label>
                         <input type="text"
                             placeholder="Ingresa nuevo tu apellido"
                             class="form-control"

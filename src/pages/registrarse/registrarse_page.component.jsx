@@ -75,7 +75,7 @@ const RegistrarsePage = () => {
             window.location.replace("http://localhost:3000/ingresar");
 
         } catch (error) {
-            console.log("El email ingresado ya está registrado");
+            alert("El email ingresado ya está registrado");
         }
     }
 

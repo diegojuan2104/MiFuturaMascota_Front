@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <div className="header">
 
-      <Link className="logo-container" to="/">
+      <Link className="logo-container" >
         <Logo className="logo" />
         <p>Mi Futura Mascota</p>
       </Link>
@@ -26,7 +26,7 @@ const Header = () => {
         {autenticado == "True" ? (
           <div>
             <Link className="option" to="/perfil">Mi Perfil</Link>
-            <Link className="option" to="/" onClick={cerrarSesion}>Cerrar Sesión</Link>
+            <Link className="option" to="/ingresar" onClick={cerrarSesion}>Cerrar Sesión</Link>
           </div>
         )
           : (
