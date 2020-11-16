@@ -6,6 +6,7 @@ import axios from "axios";
 import IngresarPage from "./pages/ingresar/ingresar_page.component";
 import RegistrarsePage from "./pages/registrarse/registrarse_page.component";
 import PerfilPage from "./pages/perfil/perfil_page.component";
+import AdopcionPage from "./pages/adopcion/adopcion_page.component";
 
 function App() {
   const [usuario, establecerUsuarioActual] = useState([]);
@@ -31,6 +32,12 @@ function App() {
         <Route 
           exact path="/perfil" 
           component={PerfilPage}
+          usuario={usuario}
+          />
+
+        <Route 
+          exact path="/adopcion" 
+          component={AdopcionPage}
           usuario={usuario}
           />
       </Switch>

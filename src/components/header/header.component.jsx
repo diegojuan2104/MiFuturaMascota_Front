@@ -25,14 +25,18 @@ const Header = () => {
       <div className="options">
         {autenticado == "True" ? (
           <div>
+            <Link className="option" to="/adopcion">Adopción</Link>
             <Link className="option" to="/perfil">Mi Perfil</Link>
             <Link className="option" to="/ingresar" onClick={cerrarSesion}>Cerrar Sesión</Link>
+ 
           </div>
         )
           : (
             <div>
+              <Link className="option" to="/adopcion">Adopción</Link>
               <Link className="option" to="/ingresar">Ingresar</Link>
               <Link className="option" to="/registrarse">Crea tu cuenta</Link>
+              
             </div>
           )
         }
