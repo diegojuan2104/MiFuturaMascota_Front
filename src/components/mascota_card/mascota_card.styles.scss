@@ -1,0 +1,40 @@
+.card_mascota{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    
+    //border: solid 1px gray;
+
+    &:hover{
+
+      cursor: pointer;
+      .card_title{
+        font-weight: 600;
+        }
+        .foto_mascota{
+        img {
+          min-height: 185px;
+        }
+      }
+
+    }
+    
+    .card_title{
+        text-align: center;
+    }
+
+    .foto_mascota{
+        align-self: center;
+      img {
+        min-height: 180px;
+        max-height: 180px;
+        border-radius: 5px;
+        
+        //border: solid 3px #000;
+        border-radius: 3px;
+      }
+    }
+}
