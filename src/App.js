@@ -7,6 +7,7 @@ import IngresarPage from "./pages/ingresar/ingresar_page.component";
 import RegistrarsePage from "./pages/registrarse/registrarse_page.component";
 import PerfilPage from "./pages/perfil/perfil_page.component";
 import AdopcionPage from "./pages/adopcion/adopcion_page.component";
+import AdopcionDetalles from "./pages/adopcion_detalles/adopcion_detalles_page.component";
 
 function App() {
   const [usuario, establecerUsuarioActual] = useState([]);
@@ -38,6 +39,11 @@ function App() {
         <Route 
           exact path="/adopcion" 
           component={AdopcionPage}
+          usuario={usuario}
+          />
+          <Route 
+          exact path="/adopcion/detalles_adopcion" 
+          component={AdopcionDetalles}
           usuario={usuario}
           />
       </Switch>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from "react-router-dom";
 
 import './adopcion_page.styles.scss';
 import MascotaCard from "../../components/mascota_card/mascota_card.component"
 
 
-const MascotasPage = () => {
+const AdopcionPage = () => {
 
     const [mascotas, setMascotas] = useState([{
         "id": 1,
@@ -94,70 +94,19 @@ const MascotasPage = () => {
         "breed": "tucan",
         "type": "pajaro",
         "url_img": "https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492__480.jpg"
-    },
-    {
-        "id": 14,
-        "name": "gatito",
-        "birth_date": "2020-11-30",
-        "breed": "ninguno",
-        "type": "gato",
-        "url_img": "/14/0.jpeg"
-    },
-    {
-        "id": 15,
-        "name": "calvin",
-        "birth_date": "2019-11-29",
-        "breed": "bulldog",
-        "type": "perro",
-        "url_img": "/15/0.jpeg"
-    },
-    {
-        "id": 16,
-        "name": "bull",
-        "birth_date": "2019-11-30",
-        "breed": "pitbull",
-        "type": "perro",
-        "url_img": "/16/0.jpeg"
-    },
-    {
-        "id": 17,
-        "name": "pepito",
-        "birth_date": "2020-12-31",
-        "breed": "ninguno",
-        "type": "perro",
-        "url_img": "/17/0.jpeg"
-    },
-    {
-        "id": 18,
-        "name": "pepito",
-        "birth_date": "2020-12-31",
-        "breed": "ninguno",
-        "type": "perro",
-        "url_img": "/18/0.jpeg"
-    },
-    {
-        "id": 24,
-        "name": "pepito",
-        "birth_date": "2020-12-31",
-        "breed": "ninguno",
-        "type": "perro",
-        "url_img": "/24/0.png"
-    },
-    {
-        "id": 39,
-        "name": "pablito",
-        "birth_date": "2020-12-31",
-        "breed": "ninguno",
-        "type": "perro",
-        "url_img": "/39/0.png"
     }
     ]); 
 
       
-    const mascotaSeleccionada = index =>{
-        console.log(index.name);
+    const mascotaSeleccionada = mascota =>{
+        console.log(mascota);
+        localStorage.setItem("mascota", mascota.id);
+        localStorage.setItem("mascota", mascota.name);
+        localStorage.setItem("birth_date", mascota.birth_date);
+        localStorage.setItem("breed", mascota.breed);
+        localStorage.setItem("type", mascota.type);
+        localStorage.setItem("url_img", mascota.url_img);
     }
-
 
     return (
         <div>
@@ -169,9 +118,9 @@ const MascotasPage = () => {
             <div className="box_adopcion">
                 <div className="row" >
                     {mascotas.map((mascota, i) => (
-                        <div  key={i} onClick={mascotaSeleccionada.bind(this,mascota)} className="col-md-6 col-sm-12 col-lg-6 col-xl-4" >
+                        <Link to="/adopcion/detalles_adopcion" key={i} onClick={mascotaSeleccionada.bind(this,mascota)} className="col-md-6 col-sm-12 col-lg-6 col-xl-4" >
                             <MascotaCard mascota={mascota} />
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
@@ -179,4 +128,4 @@ const MascotasPage = () => {
     );
 }
 
-export default MascotasPage;
+export default AdopcionPage;

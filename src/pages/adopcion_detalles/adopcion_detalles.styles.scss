@@ -1,0 +1,30 @@
+.box_adopcion_detalles {
+  margin-top: 20px;
+  display: flex;
+  .foto_mascota {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    h1{
+        align-self: center;
+    }
+    img { 
+      max-width: 400px; 
+      max-height: 250px;
+      border-radius: 5px;
+      align-self: center;
+    }
+  }
+  .info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    h2{
+
+    }
+    .info_detalle{
+        padding: 15px;
+        border-radius: 3px;
+    }
+  }
+}
