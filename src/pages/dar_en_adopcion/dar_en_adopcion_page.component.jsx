@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import uuid from "uuid/dist/v4";
 
-import Select from "./Select";
-import OptionsBreed from "./OptionsBreed";
+import Select from "../../components/opciones_tipo_mascota/Select";
+import OptionsBreed from "../../components/opciones_raza_mascota/OptionsBreed";
 
 import "./dar_en_adopcion.styles.scss"
 

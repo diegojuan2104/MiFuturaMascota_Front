@@ -1,0 +1,14 @@
+.filtros{
+    display: flex;
+    font-size: 15px;
+
+
+    label{
+     padding:0px  10px;   
+    }
+    button{
+        background-color: black;
+        color: white;
+        margin-left: 20px;
+    }
+}
