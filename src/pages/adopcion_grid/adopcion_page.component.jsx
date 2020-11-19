@@ -118,8 +118,9 @@ const AdopcionPage = () => {
             <div className="box_adopcion">
                 <div className="row" >
                     {mascotas.map((mascota, i) => (
-                        <Link to="/adopcion/detalles_adopcion" key={i} onClick={mascotaSeleccionada.bind(this,mascota)} className="col-md-6 col-sm-12 col-lg-6 col-xl-4" >
-                            <MascotaCard mascota={mascota} />
+                        <Link style={{ textDecoration: 'none', color:"#000" }} className="card_mascota"
+                        to="/adopcion/detalles_adopcion" key={i} onClick={mascotaSeleccionada.bind(this,mascota)} className="col-md-6 col-sm-12 col-lg-6 col-xl-4" >
+                            <MascotaCard  mascota={mascota} />
                         </Link>
                     ))}
                 </div>

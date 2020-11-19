@@ -1,0 +1,23 @@
+.title_adopcion {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+  }
+
+  img {
+    align-self: center;
+    margin: 0px;
+    max-height: 90px;
+  }
+}
+
+.box_adopcion {
+  padding: 20px;
+  border: solid 0.5px #000;
+  border-radius: 10px;
+  text-decoration: none;
+  .card_mascota {
+    text-decoration: none;
+  }
+}

@@ -1,7 +1,7 @@
 .box_adopcion_detalles {
   margin-top: 20px;
   display: flex;
-  .foto_mascota {
+  .foto_mascota_contacto {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -13,18 +13,19 @@
       max-height: 250px;
       border-radius: 5px;
       align-self: center;
+      margin-bottom:15px;
+      border: solid 0.5px #000;
     }
   }
   .info{
+    padding: 15px;
     display: flex;
     flex-direction: column;
     width: 100%;
     h2{
-
+      border-bottom: solid 1px #000;
     }
     .info_detalle{
-        padding: 15px;
-        border-radius: 3px;
     }
   }
 }

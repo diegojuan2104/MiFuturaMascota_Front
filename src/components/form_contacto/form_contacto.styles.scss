@@ -1,0 +1,23 @@
+form{
+    max-width: 500px;
+    .input-box{
+        input{
+            font-size: 15px;
+        }
+
+        textarea{
+            font-size: 15px;
+        }
+    }
+
+
+    .button-box{
+        display: flex;
+        justify-content: center;
+
+        button{
+            background-color: #000;
+            color: #fff;
+        }
+    }
+}

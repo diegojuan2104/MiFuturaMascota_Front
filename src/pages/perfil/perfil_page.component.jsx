@@ -57,7 +57,7 @@ const PerfilPage = () => {
 
     let cargarInfo = () => {
        
-        if (autenticado == "True") {
+        if (autenticado === "True") {
             axios.get(URL + "/user/" + id_user).then(res => {
                 console.log(res.data);
 

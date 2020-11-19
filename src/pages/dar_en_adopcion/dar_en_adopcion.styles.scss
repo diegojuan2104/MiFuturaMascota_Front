@@ -1,0 +1,17 @@
+
+.form_registro{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    
+    .myform{
+        font-size: 18px;
+        width: 35%;
+    }
+
+    button{
+        background-color: black;
+        color: white;
+    }
+}
