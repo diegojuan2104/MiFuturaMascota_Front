@@ -27,7 +27,7 @@ const IngresarPage = () => {
 
             axios.post(URL + "/login", usuario).then(res => {
                 console.log(res);
-                let user_id = res.data.email
+                let user_id = res.data.user_id
 
                 localStorage.setItem('tokenTest', res.data.access_token);
                 localStorage.setItem('id_user', user_id);

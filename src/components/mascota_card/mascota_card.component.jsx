@@ -1,8 +1,9 @@
 import React from 'react';
+import { masco } from '../../config/vars';
 import './mascota_card.styles.scss'
 
 const mascota_card = ({mascota}) => {
-
+    mascota.url_img = 'http://localhost:8000'+mascota.url_img
   
     return ( 
     <div className="card_mascota" >

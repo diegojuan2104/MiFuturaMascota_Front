@@ -1,12 +1,12 @@
 import React, { useEffect, useState, Fragment } from "react";
 import axios from "axios";
 
-const OptionsBreed = ({ id }) => {
+const Opciones_ciudades = ({ id }) => {
   const [options, setOptions] = useState([]);
   useEffect(() => {
-    if (id !== "") {
+    if (id !== "" && id) {
       let getData = async () => {
-        const result = await axios("http://localhost:5000/animal-breeds/" + id);
+        const result = await axios("http://localhost:5000/citys-states/" + id);
         setOptions(result.data);
       };
       getData();
@@ -26,4 +26,4 @@ const OptionsBreed = ({ id }) => {
   );
 };
 
-export default OptionsBreed;
+export default Opciones_ciudades;
