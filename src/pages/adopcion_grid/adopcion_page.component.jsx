@@ -53,9 +53,10 @@ const AdopcionPage = () => {
     });
 
     console.log(filtros);
-    document.getElementById("atype_filter").selectedIndex = 0;
+    document.getElementById("type_filter").selectedIndex = 0;
     document.getElementById("breed_filter").selectedIndex = 0;
-    document.getElementById("city_filter").selectedIndex = 0;
+    document.getElementById("citys_filter").selectedIndex = 0;
+    document.getElementById("state_filter").selectedIndex = 0;
   };
 
   const handleChange = (e) => {
@@ -123,6 +124,7 @@ const AdopcionPage = () => {
           className="u-full-width"
           value={state}
           name="state"
+          id="state_filter"
           onChange={handleChange}
         >
           <option defaultValue value="">
@@ -134,9 +136,10 @@ const AdopcionPage = () => {
           Ciudad/Municipio<span className="required">*</span>
         </label>
         <select
-          className="u-full-width"
+          
           value={location}
           name="location"
+          id="citys_filter"
           onChange={handleChange}
         >
           <option defaultValue value="">
