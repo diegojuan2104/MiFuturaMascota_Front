@@ -63,11 +63,15 @@ const AdopcionPage = () => {
     });
 
     console.log(filtros);
-    document.getElementById("type_filter").selectedIndex = 0;
+    document.getElementById("atype_filter").selectedIndex = 0;
     document.getElementById("breed_filter").selectedIndex = 0;
+<<<<<<< HEAD
     document.getElementById("citys_filter").selectedIndex = 0;
     document.getElementById("state_filter").selectedIndex = 0;
     return 0
+=======
+    document.getElementById("city_filter").selectedIndex = 0;
+>>>>>>> 4e3feef21944fbe59d61501e6b16ecb5f18470ec
   };
 
   const handleChange = (e) => {
@@ -100,6 +104,7 @@ const AdopcionPage = () => {
         <h1 className="col-12">Mascotas en adopción</h1>
       </div>
       <div className="filtros">
+<<<<<<< HEAD
         <div className="combobox">
           <label>Tipo de animal:</label>
           <select
@@ -163,6 +168,67 @@ const AdopcionPage = () => {
           <button onClick={limpiarFiltros}>QUITAR FILTROS</button>
           <button onClick={busqueda_nueva}>Reiniciar Busqueda</button>
         </div>
+=======
+        <label>Tipo de animal:</label>
+        <select
+          value={atype}
+          name="atype"
+          id="type_filter"
+          onChange={handleChange}
+        >
+          <option defaultValue value="">
+            Seleccione una opción
+          </option>
+    
+          <Select />
+        </select>
+
+        <label>Raza de animal:</label>
+        <select
+          value={breed}
+          name="breed"
+          id="breed_filter"
+          onChange={handleChange}
+        >
+          <option defaultValue value="">
+            Seleccione una opción
+          </option>
+       
+          <OptionsBreed id={atype} />
+        </select>
+
+        <label>
+          Departamento<span className="required">*</span>
+        </label>
+        <select
+          className="u-full-width"
+          value={state}
+          name="state"
+          onChange={handleChange}
+        >
+          <option defaultValue value="">
+            Seleccione una opción
+          </option>
+          <Select_depart />
+        </select>
+        <label>
+          Ciudad/Municipio<span className="required">*</span>
+        </label>
+        <select
+          className="u-full-width"
+          value={location}
+          name="location"
+          onChange={handleChange}
+        >
+          <option defaultValue value="">
+            Seleccione una opción
+          </option>
+          <Opciones_ciudades id={state} />
+        </select>
+
+        <button onClick={cargarInfo}>Buscar</button>
+        <button onClick={limpiarFiltros}>QUITAR FILTROS</button>
+>>>>>>> 4e3feef21944fbe59d61501e6b16ecb5f18470ec
       </div>
       <div className="box_adopcion">
         <div className="row">
