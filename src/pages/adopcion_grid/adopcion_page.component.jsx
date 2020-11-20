@@ -65,13 +65,11 @@ const AdopcionPage = () => {
     });
   };
 
-  let mascotasFiltradas = mascotas;
 
   const { breed, atype, state, location } = filtros;
 
   const mascotaSeleccionada = (mascota) => {
     console.log(mascota);
-    localStorage.setItem("mascota", mascota.id);
     localStorage.setItem("mascota", mascota.name);
     localStorage.setItem("birth_date", mascota.birth_date);
     localStorage.setItem("breed", mascota.breed);
@@ -80,6 +78,7 @@ const AdopcionPage = () => {
     localStorage.setItem("description", mascota.description);
     localStorage.setItem("city", mascota.city);
     localStorage.setItem("state", mascota.state);
+    
   };
 
   return (

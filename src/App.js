@@ -9,6 +9,7 @@ import PerfilPage from "./pages/perfil/perfil_page.component";
 import AdopcionPage from "./pages/adopcion_grid/adopcion_page.component";
 import AdopcionDetalles from "./pages/adopcion_detalles/adopcion_detalles_page.component";
 import DarEnAdopcion from "./pages/dar_en_adopcion/dar_en_adopcion_page.component"
+import Inicio from "./pages/inicio/inicio_page.component"
 
 function App() {
   const [usuario, establecerUsuarioActual] = useState([]);
@@ -56,6 +57,18 @@ function App() {
         <Route 
           exact path="/dar_en_adopcion" 
           component={DarEnAdopcion}
+          usuario={usuario}
+          />
+
+        <Route 
+          exact path="/dar_en_adopcion" 
+          component={DarEnAdopcion}
+          usuario={usuario}
+          />
+
+        <Route 
+          exact path="/" 
+          component={Inicio}
           usuario={usuario}
           />
       </Switch>

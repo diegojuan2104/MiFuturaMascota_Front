@@ -15,7 +15,10 @@ const [mascota, actualizarMascota] = useState({
     "birth_date": "",
     "breed": "",
     "type": "",
-    "url_img": ""
+    "url_img": "",
+    "details":"",
+    "city":"",
+    "state":""
 });
 
 useEffect(() => {
@@ -31,13 +34,19 @@ const cargarInfo = () => {
     let breed =  localStorage.getItem("breed");
     let type =   localStorage.getItem("type");
     let url_img =  localStorage.getItem("url_img");
+    let city =  localStorage.getItem("city");
+    let state =  localStorage.getItem("state");
+    let details =  localStorage.getItem("description");
    
     let mascota = {
         name,
         birth_date,
         breed,
         type,
-        url_img
+        url_img,
+        details,
+        city,
+        state
     }
 
     actualizarMascota(mascota)
@@ -57,9 +66,11 @@ const cargarInfo = () => {
                         <p><strong>Fecha de nacimiento: </strong>{mascota.birth_date}</p>
                         <p><strong>Raza: </strong>{mascota.breed}</p>
                         <p><strong>Tipo: </strong>{mascota.type}</p>
+                        <p><strong>Departamento: </strong>{mascota.state}</p>
+                        <p><strong>Ciudad: </strong>{mascota.city}</p>
                     </div>
                     <h2>Detalles</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque porro quidem labore, quas doloremque dicta culpa beatae, architecto debitis, voluptatem cupiditate laboriosam quibusdam omnis dolorem non expedita ex doloribus magnam dignissimos dolores modi delectus repellendus? Doloribus ea voluptatem fuga quod suscipit, magnam consectetur eveniet laborum sint expedita aliquid numquam sunt delectus illum, dolores doloremque nemo natus ut, qui eos minima omnis sed. Obcaecati similique dolores placeat odit. Blanditiis repudiandae quibusdam aut odio nemo amet repellat, fugit, consequatur maiores inventore et expedita aliquam animi consequuntur adipisci praesentium, magni porro! Dolorem perspiciatis iste sunt, blanditiis rem nisi voluptatibus dolor dolores atque sint?</p>
+                    <p>{mascota.details}</p>
                 </div>
         </div>
     );
