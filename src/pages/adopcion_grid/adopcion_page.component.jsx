@@ -5,6 +5,8 @@ import "./adopcion_page.styles.scss";
 import MascotaCard from "../../components/mascota_card/mascota_card.component";
 import Select from "../../components/opciones_tipo_mascota/Select";
 import OptionsBreed from "../../components/opciones_raza_mascota/OptionsBreed";
+import Opciones_ciudades from "../../components/opciones_ciudades/Opciones_ciudades";
+import Select_depart from "../../components/opciones_departamentos/Select_depart";
 
 import { URL, masco } from "../../config/vars";
 import axios from "axios";
@@ -12,35 +14,46 @@ import "./filtros.styles.scss";
 
 const AdopcionPage = () => {
   const [filtros, setFiltros] = useState({
-    type: "",
+    atype: "",
     breed: "",
-    city: "",
+    state: "",
+    location: "",
   });
 
   const [mascotas, setMascotas] = useState([{}]);
-
+  const [Flag, setFlag] = useState(false);
+  let getData = async () => {
+    const result = await axios("http://localhost:5000/pets");
+    setMascotas(result.data);
+  };
   useEffect(() => {
-      let getData = async () => {
-        const result = await axios("http://localhost:5000/pets");
-        console.log(result.data);
-        setMascotas(result.data);
-
-      };
+    if (!Flag) {
+      console.log("sisas");
       getData();
+      setFlag(true);
+    }
     return () => console.log("clean");
   }, []);
+
+  let getDataFiltered = async () => {
+    let res = await axios.post("http://localhost:5000/filter_by",filtros)
+    setMascotas([{}]);
+    console.log(res);  
+    setMascotas(res.data);
+  };
+  const cargarInfo = () => {
+    getDataFiltered()
+    
+  };
   const limpiarFiltros = () => {
-    localStorage.setItem("breed_filter", "");
-    localStorage.setItem("type_filter", "");
-    localStorage.setItem("city_filter", "");
     setFiltros({
       breed: "",
-      type: "",
-      city: "",
+      atype: "",
+      location: "",
     });
 
     console.log(filtros);
-    document.getElementById("type_filter").selectedIndex = 0;
+    document.getElementById("atype_filter").selectedIndex = 0;
     document.getElementById("breed_filter").selectedIndex = 0;
     document.getElementById("city_filter").selectedIndex = 0;
   };
@@ -54,7 +67,7 @@ const AdopcionPage = () => {
 
   let mascotasFiltradas = mascotas;
 
-  const { breed, type, city } = filtros;
+  const { breed, atype, state, location } = filtros;
 
   const mascotaSeleccionada = (mascota) => {
     console.log(mascota);
@@ -78,15 +91,15 @@ const AdopcionPage = () => {
       <div className="filtros">
         <label>Tipo de animal:</label>
         <select
-          value={type}
-          name="type"
+          value={atype}
+          name="atype"
           id="type_filter"
           onChange={handleChange}
         >
           <option defaultValue value="">
             Seleccione una opción
           </option>
-          <option>perro</option>
+    
           <Select />
         </select>
 
@@ -100,29 +113,45 @@ const AdopcionPage = () => {
           <option defaultValue value="">
             Seleccione una opción
           </option>
-          <option>pastor</option>
-          <option>bulldog</option>
-          <OptionsBreed id={type} />
+       
+          <OptionsBreed id={atype} />
         </select>
 
-        <label>Ciudad:</label>
+        <label>
+          Departamento<span className="required">*</span>
+        </label>
         <select
-          id="city_filter"
-          value={city}
-          name="city"
+          className="u-full-width"
+          value={state}
+          name="state"
           onChange={handleChange}
         >
           <option defaultValue value="">
             Seleccione una opción
           </option>
-          <option>Medellin</option>
-          <option>Cali</option>
+          <Select_depart />
+        </select>
+        <label>
+          Ciudad/Municipio<span className="required">*</span>
+        </label>
+        <select
+          className="u-full-width"
+          value={location}
+          name="location"
+          onChange={handleChange}
+        >
+          <option defaultValue value="">
+            Seleccione una opción
+          </option>
+          <Opciones_ciudades id={state} />
         </select>
 
+        <button onClick={cargarInfo}>Buscar</button>
         <button onClick={limpiarFiltros}>QUITAR FILTROS</button>
       </div>
       <div className="box_adopcion">
         <div className="row">
+          
           {mascotas.map((mascota, i) => (
             <Link
               style={{ textDecoration: "none", color: "#000" }}
