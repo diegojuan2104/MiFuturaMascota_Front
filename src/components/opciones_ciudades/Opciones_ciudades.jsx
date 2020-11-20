@@ -10,7 +10,10 @@ const Opciones_ciudades = ({ id }) => {
         setOptions(result.data);
       };
       getData();
+    }else{
+      setOptions([])
     }
+    setOptions([])
     return () => console.log("clean");
   }, [id]);
   return (
