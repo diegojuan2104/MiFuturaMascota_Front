@@ -13,7 +13,7 @@ const Opciones_ciudades = ({ id }) => {
     }else{
       setOptions([])
     }
-    setOptions([])
+   
     return () => console.log("clean");
   }, [id]);
   return (

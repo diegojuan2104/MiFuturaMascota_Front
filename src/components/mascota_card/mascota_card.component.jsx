@@ -10,7 +10,7 @@ const mascota_card = ({mascota}) => {
                         src={'http://localhost:8000'+mascota.url_img}
                     ></img>
                 </div>
-                <h4 className="card_title">{mascota.name}</h4>
+    <h4 className="card_title">{mascota.name}</h4>
                 
     </div>);
 }

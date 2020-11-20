@@ -10,6 +10,8 @@ const OptionsBreed = ({ id }) => {
         setOptions(result.data);
       };
       getData();
+    }else{
+      setOptions([])
     }
     return () => console.log("clean");
   }, [id]);

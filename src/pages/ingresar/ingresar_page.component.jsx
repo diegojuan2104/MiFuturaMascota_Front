@@ -33,7 +33,7 @@ const IngresarPage = () => {
                 localStorage.setItem('id_user', user_id);
                 localStorage.setItem('autenticado', "True");
 
-                window.location.replace("http://localhost:3000/perfil");
+                window.location.replace("http://localhost:3000/adopcion");
 
             }).catch(error => {
                 console.log(error.response);
