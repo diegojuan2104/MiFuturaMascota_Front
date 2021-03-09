@@ -23,7 +23,7 @@ const AdopcionPage = () => {
   const [mascotas, setMascotas] = useState([{}]);
   const [Flag, setFlag] = useState(false);
   let getData = async () => {
-    const result = await axios("http://localhost:5000/pets");
+    const result = await axios(URL+"/pets");
     setMascotas(result.data);
   };
   useEffect(() => {
@@ -41,13 +41,13 @@ const AdopcionPage = () => {
     }
 
   let getDataFiltered = async () => {
-    let res = await axios.post("http://localhost:5000/filter_by", filtros);
+    let res = await axios.post(URL+"/filter_by", filtros);
     setMascotas([{}]);
     console.log(res);
     setMascotas(res.data);
   };
   let getDataFiltered1 = async () => {
-    let res = await axios.post("http://localhost:5000/filter_by", {});
+    let res = await axios.post(URL+"/filter_by", {});
     setMascotas([{}]);
     console.log(res);
     setMascotas(res.data);
@@ -65,13 +65,7 @@ const AdopcionPage = () => {
     console.log(filtros);
     document.getElementById("atype_filter").selectedIndex = 0;
     document.getElementById("breed_filter").selectedIndex = 0;
-<<<<<<< HEAD
-    document.getElementById("citys_filter").selectedIndex = 0;
-    document.getElementById("state_filter").selectedIndex = 0;
-    return 0
-=======
     document.getElementById("city_filter").selectedIndex = 0;
->>>>>>> 4e3feef21944fbe59d61501e6b16ecb5f18470ec
   };
 
   const handleChange = (e) => {
@@ -104,71 +98,6 @@ const AdopcionPage = () => {
         <h1 className="col-12">Mascotas en adopción</h1>
       </div>
       <div className="filtros">
-<<<<<<< HEAD
-        <div className="combobox">
-          <label>Tipo de animal:</label>
-          <select
-            value={atype}
-            name="atype"
-            id="type_filter"
-            onChange={handleChange}
-          >
-            <option defaultValue value="">
-              Seleccione una opción
-            </option>
-
-            <Select />
-          </select>
-
-          <label>Raza de animal:</label>
-          <select
-            value={breed}
-            name="breed"
-            id="breed_filter"
-            onChange={handleChange}
-          >
-            <option defaultValue value="">
-              Seleccione una opción
-            </option>
-
-            <OptionsBreed id={atype} />
-          </select>
-
-          <label>
-            Departamento<span className="required">*</span>
-          </label>
-          <select
-            value={state}
-            name="state"
-            id="state_filter"
-            onChange={handleChange}
-          >
-            <option defaultValue value="">
-              Seleccione una opción
-            </option>
-            <Select_depart />
-          </select>
-          <label>
-            Ciudad/Municipio<span className="required">*</span>
-          </label>
-          <select
-            value={location}
-            name="location"
-            id="citys_filter"
-            onChange={handleChange}
-          >
-            <option defaultValue value="">
-              Seleccione una opción
-            </option>
-            <Opciones_ciudades id={state} />
-          </select>
-        </div>
-        <div className="botones">
-          <button onClick={cargarInfo}>Buscar</button>
-          <button onClick={limpiarFiltros}>QUITAR FILTROS</button>
-          <button onClick={busqueda_nueva}>Reiniciar Busqueda</button>
-        </div>
-=======
         <label>Tipo de animal:</label>
         <select
           value={atype}
@@ -228,7 +157,6 @@ const AdopcionPage = () => {
 
         <button onClick={cargarInfo}>Buscar</button>
         <button onClick={limpiarFiltros}>QUITAR FILTROS</button>
->>>>>>> 4e3feef21944fbe59d61501e6b16ecb5f18470ec
       </div>
       <div className="box_adopcion">
         <div className="row">

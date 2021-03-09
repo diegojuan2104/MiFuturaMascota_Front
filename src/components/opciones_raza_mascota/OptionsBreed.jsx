@@ -1,12 +1,14 @@
 import React, { useEffect, useState, Fragment } from "react";
 import axios from "axios";
 
+import { URL } from "../../config/vars"
+
 const OptionsBreed = ({ id }) => {
   const [options, setOptions] = useState([]);
   useEffect(() => {
     if (id !== "") {
       let getData = async () => {
-        const result = await axios("http://localhost:5000/animal-breeds/" + id);
+        const result = await axios( URL+ "/animal-breeds/" + id);
         setOptions(result.data);
       };
       getData();

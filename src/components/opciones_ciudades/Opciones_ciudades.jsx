@@ -1,12 +1,13 @@
 import React, { useEffect, useState, Fragment } from "react";
 import axios from "axios";
+import { URL } from "../../config/vars"
 
 const Opciones_ciudades = ({ id }) => {
   const [options, setOptions] = useState([]);
   useEffect(() => {
     if (id !== "" && id) {
       let getData = async () => {
-        const result = await axios("http://localhost:5000/citys-states/" + id);
+        const result = await axios(URL + id);
         setOptions(result.data);
       };
       getData();

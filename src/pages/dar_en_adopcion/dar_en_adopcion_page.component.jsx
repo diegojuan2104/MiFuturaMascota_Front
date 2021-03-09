@@ -7,6 +7,7 @@ import Opciones_ciudades from "../../components/opciones_ciudades/Opciones_ciuda
 import Select_depart from "../../components/opciones_departamentos/Select_depart";
 
 import "./dar_en_adopcion.styles.scss";
+import { URL } from "../../config/vars"
 
 import axios from "axios";
 
@@ -67,7 +68,7 @@ const DarEnAdopcion = () => {
     };
     axios({
       method: "post",
-      url: "http://localhost:5000/pet",
+      url: URL+"/pet",
       data: bodyFormData,
       headers: {
         "Content-Type": "multipart/form-data",

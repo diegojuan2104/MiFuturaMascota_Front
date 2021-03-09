@@ -1,11 +1,12 @@
 import React, { useEffect, useState, Fragment } from "react";
 import axios from "axios";
+import { URL } from "../../config/vars"
 
 const Select = () => {
   const [options, setOptions] = useState([]);
   useEffect(() => {
     let getData = async () => {
-      const result = await axios("http://localhost:5000/states");
+      const result = await axios(URL+"/states");
       setOptions(result.data);
     };
     getData();

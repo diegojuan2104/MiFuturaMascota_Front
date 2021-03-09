@@ -6,7 +6,9 @@ const inicio_page = () => {
     <div className="mensaje_inicio">
         <div className="mensaje_box">
             <img src={require("../../images/paws.png")} />
-            <p>Da tus primeros pasos y registrate!</p>
+            <p>
+Alguien quiere adoptar tu mascota! </p>
+<p>Aquí tienes la información para contactarlo.</p>
         </div>
     </div>);
 }
