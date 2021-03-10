@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/pawprint.svg";
+
 
 import "./header.styles.scss";
 
 const Header = () => {
+
+  const history = useHistory();
 
   let autenticado = localStorage.getItem("autenticado");
 
@@ -12,6 +15,11 @@ const Header = () => {
     localStorage.setItem("autenticado","");
     localStorage.setItem("id_user","");
     localStorage.setItem("tokenTest","");
+
+    history.push("/ingresar");
+    
+
+
     window.location.replace("http://localhost:3000/ingresar");
   }
   return (

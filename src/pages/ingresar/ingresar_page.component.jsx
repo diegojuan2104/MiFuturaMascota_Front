@@ -1,11 +1,13 @@
 import React, { Fragment, useState, useEffect } from "react";
 import './ingresar_page.styles.scss'
-
+import { useHistory } from "react-router-dom";
 import { URL } from "../../config/vars"
 
 import axios from "axios";
 
 const IngresarPage = () => {
+
+    const history = useHistory();
 
     const [usuario, actualizarUsuario] = useState({
         email: "",
@@ -16,7 +18,7 @@ const IngresarPage = () => {
 
     const submitIngreso = (e) => {
         e.preventDefault();
-
+        
         try {
             if (email.trim() == "" || password.trim() == "") {
                 alert("Los campos deben estar llenos")
@@ -33,8 +35,7 @@ const IngresarPage = () => {
                 localStorage.setItem('id_user', user_id);
                 localStorage.setItem('autenticado', "True");
 
-                window.location.replace("http://localhost:3000/adopcion");
-
+                history.push("/adopcion");
             }).catch(error => {
                 console.log(error.response);
                 alert("Correo y/o contraseña invalida")

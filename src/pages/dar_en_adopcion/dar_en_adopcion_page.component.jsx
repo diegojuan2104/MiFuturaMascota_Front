@@ -8,17 +8,20 @@ import Select_depart from "../../components/opciones_departamentos/Select_depart
 
 import "./dar_en_adopcion.styles.scss";
 import { URL } from "../../config/vars"
-
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const DarEnAdopcion = () => {
+
+  const history = useHistory();
+
   let email_user = localStorage.getItem("id_user");
   useEffect(() => {
     email_user = localStorage.getItem("id_user");
 
     if (!email_user) {
       localStorage.clear();
-      window.location.replace("http://localhost:3000/");
+     history.push("/")
     }
     update_pet(
       {

@@ -3,11 +3,12 @@ import React, { Fragment, useState, useEffect } from "react";
 import './registrarse_page.styles.scss'
 
 import { URL } from "../../config/vars"
-
-
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const RegistrarsePage = () => {
+    
+    const history = useHistory();
 
     const [usuario, actualizarUsuario] = useState({
         email: "",
@@ -72,8 +73,7 @@ const RegistrarsePage = () => {
                 password_confirmation: ""
             });
 
-            window.location.replace("http://localhost:3000/ingresar");
-
+            history.push("/ingresar");
         } catch (error) {
             alert("El email ingresado ya está registrado");
         }
