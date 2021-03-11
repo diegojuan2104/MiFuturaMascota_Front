@@ -58,7 +58,7 @@ const cargarInfo = () => {
                 <div className="foto_mascota_contacto col-md-12 col-sm-12 col-lg-6">
                     <h1>{mascota.name}</h1>
 
-                    <img src={'http://localhost:8000'+mascota.url_img}/>
+                    <img src={mascota.url_img}/>
                     <FormContacto/>
                 </div>
                 <div className="info col-md-12 col-sm-12 col-lg-6">

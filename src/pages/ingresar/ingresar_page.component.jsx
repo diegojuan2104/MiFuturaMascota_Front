@@ -34,7 +34,6 @@ const IngresarPage = () => {
                 localStorage.setItem('tokenTest', res.data.access_token);
                 localStorage.setItem('id_user', user_id);
                 localStorage.setItem('autenticado', "True");
-
                 history.push("/adopcion");
             }).catch(error => {
                 console.log(error.response);

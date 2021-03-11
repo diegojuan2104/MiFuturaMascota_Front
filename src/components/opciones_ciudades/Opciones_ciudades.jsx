@@ -7,7 +7,7 @@ const Opciones_ciudades = ({ id }) => {
   useEffect(() => {
     if (id !== "" && id) {
       let getData = async () => {
-        const result = await axios(URL + id);
+        const result = await axios(URL +"/citys-states/" + id);
         setOptions(result.data);
       };
       getData();
