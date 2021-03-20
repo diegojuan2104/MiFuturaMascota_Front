@@ -10,19 +10,24 @@ import "./dar_en_adopcion.styles.scss";
 import { URL } from "../../config/vars"
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { render } from "@testing-library/react";
+
+let currentImgsSelected = [];
+let tagsImgs = [];
 
 const DarEnAdopcion = () => {
 
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
   const history = useHistory();
-
   let email_user = localStorage.getItem("id_user");
   useEffect(() => {
     email_user = localStorage.getItem("id_user");
 
-    if (!email_user) {
-      localStorage.clear();
-     history.push("/")
-    }
+    // if (!email_user) {
+    //   localStorage.clear();
+    //  history.push("/")
+    // }
     update_pet(
       {
         ...Mascota,
@@ -48,6 +53,7 @@ const DarEnAdopcion = () => {
   });
   const [error, setError] = useState(false);
 
+
   const createPet = (mascota) => {
     var bodyFormData = new FormData();
     bodyFormData.append("id_owner", mascota.user_id);
@@ -71,7 +77,7 @@ const DarEnAdopcion = () => {
     };
     axios({
       method: "post",
-      url: URL+"/pet",
+      url: URL + "/pet",
       data: bodyFormData,
       headers: {
         "Content-Type": "multipart/form-data",
@@ -90,7 +96,11 @@ const DarEnAdopcion = () => {
         filename: e.target.value,
         images: e.target.files,
       });
-      console.log(Mascota.filename);
+
+      currentImgsSelected.push(e.target.files);
+
+      console.log(currentImgsSelected);
+
       return;
     }
     update_pet({
@@ -142,6 +152,11 @@ const DarEnAdopcion = () => {
     city,
     state,
   } = Mascota;
+
+  const deleteImg = (id) => {
+    currentImgsSelected.splice(id);
+    forceUpdate();
+  }
   return (
     <Fragment>
       <div className="form_registro">
@@ -250,6 +265,20 @@ const DarEnAdopcion = () => {
             onChange={handleChange}
             accept="image/png, image/jpeg, image/jpg,image/jpe"
           />
+
+          <div>
+            <ul>
+              {currentImgsSelected.map((tag, i) => (
+                <li key={i}>
+                  {tag[0].name}
+                  <div class="btn " onClick={
+                    deleteImg.bind(this, i)
+                  }>X</div>
+                </li>
+
+              ))}
+            </ul>
+          </div>
           <button type="submit" className="u-full-width myboton">
             Agregar Mascota
           </button>
@@ -257,6 +286,9 @@ const DarEnAdopcion = () => {
       </div>
     </Fragment>
   );
+
+
+
 };
 
 export default DarEnAdopcion;

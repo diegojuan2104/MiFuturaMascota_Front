@@ -1,18 +1,19 @@
 .box_adopcion_detalles {
   margin-top: 50px;
   display: flex;
+  justify-content: space-evenly;
   .foto_mascota_contacto {
     display: flex;
     flex-direction: column;
+    max-width: 400px; 
+    max-height: 250px;
     width: 100%;
     h1{
         align-self: center;
     }
     img { 
-      max-width: 400px; 
-      max-height: 250px;
+     
       border-radius: 5px;
-      align-self: center;
       margin-bottom:15px;
       border: solid 0.5px #000;
     }
