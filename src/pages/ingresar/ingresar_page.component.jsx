@@ -5,7 +5,17 @@ import { URL } from "../../config/vars"
 
 import axios from "axios";
 
+//Actions de Redux
+import { useDispatch, useSelector } from "react-redux";
+import { loginUserAction } from "../../actions/userActions";
+
 const IngresarPage = () => {
+
+    //utilizar use distpach y te crea una función
+    const dispatch = useDispatch();
+
+    //mandar llamar el action de boyaActions
+    const loginUser = (user) => dispatch(loginUserAction(user));
 
     const history = useHistory();
 
@@ -17,29 +27,15 @@ const IngresarPage = () => {
     const { email, password } = usuario;
 
     const submitIngreso = (e) => {
-        e.preventDefault();
-        
+        e.preventDefault();     
         try {
             if (email.trim() == "" || password.trim() == "") {
                 alert("Los campos deben estar llenos")
                 return;
             }
-
             usuario.email = email.trim()
-
-            axios.post(URL + "/login", usuario).then(res => {
-                console.log(res);
-                let user_id = res.data.user_id
-
-                localStorage.setItem('tokenTest', res.data.access_token);
-                localStorage.setItem('id_user', user_id);
-                localStorage.setItem('autenticado', "True");
-                history.push("/adopcion");
-            }).catch(error => {
-                console.log(error.response);
-                alert("Correo y/o contraseña invalida")
-            });
-
+            loginUser(usuario);
+            history.push("/adopcion");
         } catch (error) {
             alert("Ha ocurrido un error")
         }

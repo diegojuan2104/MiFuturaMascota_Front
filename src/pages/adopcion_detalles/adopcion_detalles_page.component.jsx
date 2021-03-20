@@ -8,6 +8,7 @@ import './adopcion_detalles.styles.scss'
 
 import FormContacto from "../../components/form_contacto/from_contacto.component"
 
+
 const AdopocionDetalles = () => {
 
     const [infoMascota, informacionMascotaCargada] = useState(false);
