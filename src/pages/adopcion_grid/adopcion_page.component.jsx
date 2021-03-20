@@ -28,7 +28,6 @@ const AdopcionPage = () => {
   };
   useEffect(() => {
     if (!Flag) {
-      console.log("sisas");
       getData();
       setFlag(true);
     }
