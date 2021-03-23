@@ -5,6 +5,9 @@ import {
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
+  USER_LOGOUT,
+  USER_LOGOUT_SUCCESS,
+  USER_LOGOUT_ERROR,
 } from "../types";
 
 import clientAxios from "../config/axios";
@@ -22,7 +25,7 @@ export function loginUserAction(user) {
       user = {
         token: response.data.access_token,
         id_user: response.data.user_id,
-        autenticado: "True",
+        autenticado: true,
       };
 
       //Si todo sale bien actualizar el state
@@ -56,6 +59,53 @@ const saveInfoError = (state) => ({
   type: SAVE_INFO_USER_ERROR,
   payload: state,
 });
+
+
+
+//_______LOGOUT___________
+
+export function logoutUserAction(user) {
+  return async (dispatch) => {
+    dispatch(logoutUser());
+    try {
+      user = {
+        token: "",
+        id_user: "",
+        autenticado: false,
+      };
+
+      //Si todo sale bien actualizar el state
+      dispatch(logoutUserSuccess(user));
+    } catch (error) {
+      //si hay un error, cambiar el state
+      dispatch(logoutUserError(true));
+      //Alerta
+      Swal.fire({
+        icon: "error",
+        title: "Hubo un error",
+        text: "Hubo un error, inténtelo de nuevo",
+      });
+    }
+  };
+}
+
+const logoutUser = () => ({
+  type: USER_LOGOUT,
+  payload: true,
+});
+
+//Si se realiza con éxito
+const logoutUserSuccess = (user) => ({
+  type: USER_LOGOUT_SUCCESS,
+  payload: user,
+});
+
+//Si hubo un error
+const logoutUserError = (state) => ({
+  type: USER_LOGOUT_ERROR,
+  payload: state,
+});
+
 
 
 

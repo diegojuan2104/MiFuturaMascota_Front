@@ -5,6 +5,9 @@ import {
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
+  USER_LOGOUT,
+  USER_LOGOUT_SUCCESS,
+  USER_LOGOUT_ERROR,
 } from "../types";
 
 const initalState = {
@@ -30,8 +33,7 @@ export default function (state = initalState, action) {
         error: null,
         token: action.payload.token,
         id_user: action.payload.id_user,
-        autenticado: action.payload.autenticado
-
+        autenticado: action.payload.autenticado,
       };
 
     case SAVE_INFO_USER_ERROR:
@@ -41,25 +43,45 @@ export default function (state = initalState, action) {
         info: action.payload,
       };
 
-      case REGISTER_USER:
-        return {
-          ...state,
-          loading: action.payload,
-        };
-  
-      case REGISTER_USER_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          error: null,
-        };
-  
-      case REGISTER_USER_ERROR:
-        return {
-          ...state,
-          loading: false,
-          info: action.payload,
-        };
+    case REGISTER_USER:
+      return {
+        ...state,
+        loading: action.payload,
+      };
+
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case REGISTER_USER_ERROR:
+      return {
+        ...state,
+        loading: false,
+        info: action.payload,
+      };
+
+    case USER_LOGOUT:
+      return {
+        ...state,
+        loading: action.payload,
+      };
+
+    case USER_LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+
+    case USER_LOGOUT_ERROR:
+      return {
+        ...state,
+        loading: false,
+      };
+
     default:
       return state;
   }

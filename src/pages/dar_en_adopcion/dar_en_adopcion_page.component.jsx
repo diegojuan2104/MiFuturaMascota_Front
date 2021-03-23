@@ -12,17 +12,21 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { render } from "@testing-library/react";
 
+import { useDispatch, useSelector } from "react-redux";
+
 let currentImgsSelected = [];
 let tagsImgs = [];
 
 const DarEnAdopcion = () => {
+
+  const user = useSelector((state) => state.user);
 
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
   const history = useHistory();
   let email_user = localStorage.getItem("id_user");
   useEffect(() => {
-    email_user = localStorage.getItem("id_user");
+    email_user = user.id_user;
 
     // if (!email_user) {
     //   localStorage.clear();
