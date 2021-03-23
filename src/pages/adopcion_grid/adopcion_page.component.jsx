@@ -12,7 +12,17 @@ import { URL, masco } from "../../config/vars";
 import axios from "axios";
 import "./filtros.styles.scss";
 
+//Actions de Redux
+import { useDispatch, useSelector } from "react-redux";
+import { saveSelectedPetAction } from "../../actions/petActions";
+
 const AdopcionPage = () => {
+  //utilizar use distpach y te crea una función
+  const dispatch = useDispatch();
+
+  //mandar llamar el action
+  const savePetSelected = (pet) => dispatch(saveSelectedPetAction(pet));
+
   const [filtros, setFiltros] = useState({
     atype: "",
     breed: "",
@@ -23,7 +33,7 @@ const AdopcionPage = () => {
   const [mascotas, setMascotas] = useState([{}]);
   const [Flag, setFlag] = useState(false);
   let getData = async () => {
-    const result = await axios(URL+"/pets");
+    const result = await axios(URL + "/pets");
     setMascotas(result.data);
   };
   useEffect(() => {
@@ -34,19 +44,19 @@ const AdopcionPage = () => {
     return () => console.log("clean");
   }, []);
 
-    let busqueda_nueva = () =>{
-        limpiarFiltros()
-        getDataFiltered1()
-    }
+  let busqueda_nueva = () => {
+    limpiarFiltros();
+    getDataFiltered1();
+  };
 
   let getDataFiltered = async () => {
-    let res = await axios.post(URL+"/filter_by", filtros);
+    let res = await axios.post(URL + "/filter_by", filtros);
     setMascotas([{}]);
     console.log(res);
     setMascotas(res.data);
   };
   let getDataFiltered1 = async () => {
-    let res = await axios.post(URL+"/filter_by", {});
+    let res = await axios.post(URL + "/filter_by", {});
     setMascotas([{}]);
     console.log(res);
     setMascotas(res.data);
@@ -54,7 +64,7 @@ const AdopcionPage = () => {
   const cargarInfo = () => {
     getDataFiltered();
   };
-  const limpiarFiltros =  ()  => {
+  const limpiarFiltros = () => {
     setFiltros({
       breed: "",
       atype: "",
@@ -74,20 +84,10 @@ const AdopcionPage = () => {
     });
   };
 
-
   const { breed, atype, state, location } = filtros;
 
   const mascotaSeleccionada = (mascota) => {
-    console.log(mascota);
-    localStorage.setItem("mascota", mascota.name);
-    localStorage.setItem("birth_date", mascota.birth_date);
-    localStorage.setItem("breed", mascota.breed);
-    localStorage.setItem("type", mascota.type);
-    localStorage.setItem("url_img", mascota.url_img);
-    localStorage.setItem("description", mascota.description);
-    localStorage.setItem("city", mascota.city);
-    localStorage.setItem("state", mascota.state);
-    
+    savePetSelected(mascota);
   };
 
   return (
@@ -107,7 +107,7 @@ const AdopcionPage = () => {
           <option defaultValue value="">
             Seleccione una opción
           </option>
-    
+
           <Select />
         </select>
 
@@ -121,7 +121,7 @@ const AdopcionPage = () => {
           <option defaultValue value="">
             Seleccione una opción
           </option>
-       
+
           <OptionsBreed id={atype} />
         </select>
 

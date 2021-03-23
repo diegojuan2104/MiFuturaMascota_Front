@@ -8,8 +8,11 @@ import './adopcion_detalles.styles.scss'
 
 import FormContacto from "../../components/form_contacto/from_contacto.component"
 
+import { useDispatch, useSelector } from "react-redux";
 
 const AdopocionDetalles = () => {
+
+    const pet = useSelector((state) => state.pet);
 
     const [infoMascota, informacionMascotaCargada] = useState(false);
     const [mascota, actualizarMascota] = useState({
@@ -25,35 +28,10 @@ const AdopocionDetalles = () => {
 
     useEffect(() => {
         if (!infoMascota) {
-            cargarInfo();
+            actualizarMascota(pet);
             informacionMascotaCargada(true);
         }
     });
-
-    const cargarInfo = () => {
-        let name = localStorage.getItem("mascota");
-        let birth_date = localStorage.getItem("birth_date");
-        let breed = localStorage.getItem("breed");
-        let type = localStorage.getItem("type");
-        let url_img = localStorage.getItem("url_img");
-        let city = localStorage.getItem("city");
-        let state = localStorage.getItem("state");
-        let details = localStorage.getItem("description");
-
-        let mascota = {
-            name,
-            birth_date,
-            breed,
-            type,
-            url_img,
-            details,
-            city,
-            state
-        }
-
-        actualizarMascota(mascota)
-    }
-
 
     return (
         <div className="box_adopcion_detalles row">
