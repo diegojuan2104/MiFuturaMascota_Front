@@ -3,7 +3,7 @@ import './perfil_page.styles.scss'
 
 import { URL } from "../../config/vars"
 
-import axios from "axios";U
+import axios from "axios";
 const PerfilPage = () => {
 
     const [infoPerfil, informacionPerfilCargada] = useState(false);

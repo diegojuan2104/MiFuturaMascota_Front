@@ -31,7 +31,6 @@ export default function (state = initalState, action) {
         token: action.payload.token,
         id_user: action.payload.id_user,
         autenticado: action.payload.autenticado
-
       };
 
     case SAVE_INFO_USER_ERROR:

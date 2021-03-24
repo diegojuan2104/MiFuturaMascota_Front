@@ -8,7 +8,7 @@ import OptionsBreed from "../../components/opciones_raza_mascota/OptionsBreed";
 import Opciones_ciudades from "../../components/opciones_ciudades/Opciones_ciudades";
 import Select_depart from "../../components/opciones_departamentos/Select_depart";
 
-import { URL, masco } from "../../config/vars";
+import { URL, } from "../../config/vars";
 import axios from "axios";
 import "./filtros.styles.scss";
 
@@ -24,6 +24,7 @@ const AdopcionPage = () => {
   const [Flag, setFlag] = useState(false);
   let getData = async () => {
     const result = await axios(URL+"/pets");
+    console.log(result);
     setMascotas(result.data);
   };
   useEffect(() => {

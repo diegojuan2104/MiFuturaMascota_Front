@@ -61,7 +61,6 @@ function App() {
             component={DarEnAdopcion}
             usuario={usuario}
           />
-
           <Route exact path="/" component={Inicio} usuario={usuario} />
         </Switch>
       </Provider>

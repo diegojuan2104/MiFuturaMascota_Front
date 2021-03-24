@@ -22,7 +22,7 @@ export function loginUserAction(user) {
       user = {
         token: response.data.access_token,
         id_user: response.data.user_id,
-        autenticado: "True",
+        autenticado: true,
       };
 
       //Si todo sale bien actualizar el state
