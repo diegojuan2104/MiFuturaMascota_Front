@@ -4,7 +4,14 @@ import './perfil_page.styles.scss'
 import { URL } from "../../config/vars"
 
 import axios from "axios";
+<<<<<<< HEAD
+=======
+import { useDispatch, useSelector } from "react-redux";
+
+>>>>>>> 84f9f734c6acef6c4e0157db0bca5ad355158285
 const PerfilPage = () => {
+
+    const user = useSelector((state) => state.user);
 
     const [infoPerfil, informacionPerfilCargada] = useState(false);
     const [usuario, actualizarUsuario] = useState({
@@ -18,19 +25,16 @@ const PerfilPage = () => {
 
     const { email, name, lastname, preferences, user_image_url } = usuario;
 
-    let autenticado = localStorage.getItem("autenticado");
-    let id_user = localStorage.getItem("id_user");
-
     const actualizarDatosPerfil = (e) =>{
         e.preventDefault();
-        let user = {
+        let user_aux = {
             email,
             name,
             lastname,
             preferences,
             user_image_url
         }
-        axios.put(URL + "/user/" + id_user,user).then(res => {
+        axios.put(URL + "/user/" + user.id_user,user_aux).then(res => {
             console.log(res.data);
             alert("Datos Actualizados correctamente")
 
@@ -55,8 +59,8 @@ const PerfilPage = () => {
 
     let cargarInfo = () => {
        
-        if (autenticado === "True") {
-            axios.get(URL + "/user/" + id_user).then(res => {
+        if (user.autenticado) {
+            axios.get(URL + "/user/" + user.id_user).then(res => {
                 console.log(res.data);
 
                 const { email, name, lastname, preferences,user_image_url} = res.data

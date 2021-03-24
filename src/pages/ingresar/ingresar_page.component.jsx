@@ -1,9 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import './ingresar_page.styles.scss'
 import { useHistory } from "react-router-dom";
-import { URL } from "../../config/vars"
-
-import axios from "axios";
 
 //Actions de Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +11,7 @@ const IngresarPage = () => {
     //utilizar use distpach y te crea una función
     const dispatch = useDispatch();
 
-    //mandar llamar el action de boyaActions
+    //mandar llamar el action
     const loginUser = (user) => dispatch(loginUserAction(user));
 
     const history = useHistory();
