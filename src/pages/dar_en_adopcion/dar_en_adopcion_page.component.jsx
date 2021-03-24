@@ -15,30 +15,12 @@ import { useHistory } from "react-router-dom";
 import { render } from "@testing-library/react";
 import { useDispatch, useSelector } from "react-redux";
 
-<<<<<<< HEAD
 
 const DarEnAdopcion = () => {
   const history = useHistory();
   const email_user = useSelector((state) => state.user.id_user);
   const [, updateState] = React.useState();
   const forceUpdate = React.useCallback(() => updateState({}), []);
-=======
-import { useDispatch, useSelector } from "react-redux";
-
-let currentImgsSelected = [];
-let tagsImgs = [];
-
-const DarEnAdopcion = () => {
-
-  const user = useSelector((state) => state.user);
-
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
-  const history = useHistory();
-  let email_user = localStorage.getItem("id_user");
-  useEffect(() => {
-    email_user = user.id_user;
->>>>>>> 84f9f734c6acef6c4e0157db0bca5ad355158285
 
   useEffect(() => {
     console.log(email_user);

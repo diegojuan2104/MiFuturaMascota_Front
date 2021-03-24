@@ -33,11 +33,7 @@ export default function (state = initalState, action) {
         error: null,
         token: action.payload.token,
         id_user: action.payload.id_user,
-<<<<<<< HEAD
-        autenticado: action.payload.autenticado
-=======
         autenticado: action.payload.autenticado,
->>>>>>> 84f9f734c6acef6c4e0157db0bca5ad355158285
       };
 
     case SAVE_INFO_USER_ERROR:

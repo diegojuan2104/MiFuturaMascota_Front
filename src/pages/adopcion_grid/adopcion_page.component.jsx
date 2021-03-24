@@ -33,12 +33,8 @@ const AdopcionPage = () => {
   const [mascotas, setMascotas] = useState([{}]);
   const [Flag, setFlag] = useState(false);
   let getData = async () => {
-<<<<<<< HEAD
     const result = await axios(URL+"/pets");
     console.log(result);
-=======
-    const result = await axios(URL + "/pets");
->>>>>>> 84f9f734c6acef6c4e0157db0bca5ad355158285
     setMascotas(result.data);
   };
   useEffect(() => {

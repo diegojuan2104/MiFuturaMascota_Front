@@ -4,11 +4,8 @@ import './perfil_page.styles.scss'
 import { URL } from "../../config/vars"
 
 import axios from "axios";
-<<<<<<< HEAD
-=======
 import { useDispatch, useSelector } from "react-redux";
 
->>>>>>> 84f9f734c6acef6c4e0157db0bca5ad355158285
 const PerfilPage = () => {
 
     const user = useSelector((state) => state.user);
