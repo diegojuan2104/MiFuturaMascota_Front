@@ -3,9 +3,7 @@ import './perfil_page.styles.scss'
 
 import { URL } from "../../config/vars"
 
-import axios from "axios";
-
-
+import axios from "axios";U
 const PerfilPage = () => {
 
     const [infoPerfil, informacionPerfilCargada] = useState(false);
@@ -133,6 +131,9 @@ const PerfilPage = () => {
                     </div>
                     <div className="button-box">
                         <button type="submit">ACTUALIZAR DATOS</button>
+                    </div>
+                    <div className="button-box">
+                        <button type="submit">MIS MASCOTAS</button>
                     </div>
                 </div>
             </form>
