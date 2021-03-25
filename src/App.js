@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/header/header.component";
-import axios from "axios";
 
 import IngresarPage from "./pages/ingresar/ingresar_page.component";
 import RegistrarsePage from "./pages/registrarse/registrarse_page.component";
@@ -10,6 +9,8 @@ import AdopcionPage from "./pages/adopcion_grid/adopcion_page.component";
 import AdopcionDetalles from "./pages/adopcion_detalles/adopcion_detalles_page.component";
 import DarEnAdopcion from "./pages/dar_en_adopcion/dar_en_adopcion_page.component";
 import Inicio from "./pages/inicio/inicio_page.component";
+import MisMascotasPage from "./pages/mis_mascotas_grid/mis_mascotas_page.component";
+import MiMascotaDetalles from "./pages/mi_mascota_detalles/mi_mascota_detalles_page.component.jsx";
 
 //Redux
 import { Provider } from "react-redux";
@@ -26,6 +27,7 @@ function App() {
         <Header usuarioAutenticado={usuarioAutenticado} />
         <Switch>
           <Route exact path="/AdopcionPage" component={IngresarPage} />
+          <Route exact path="/mis_mascotas" component={MisMascotasPage} />
           <Route exact path="/ingresar" component={IngresarPage} />
           <Route exact path="/registrarse" component={RegistrarsePage} />
           <Route
@@ -45,6 +47,13 @@ function App() {
             exact
             path="/adopcion/detalles_adopcion"
             component={AdopcionDetalles}
+            usuario={usuario}
+          />
+
+          <Route
+            exact
+            path="/mis_mascotas/detalles"
+            component={MiMascotaDetalles}
             usuario={usuario}
           />
 

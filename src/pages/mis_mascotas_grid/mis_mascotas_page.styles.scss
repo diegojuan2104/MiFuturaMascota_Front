@@ -1,0 +1,29 @@
+.title_adopcion {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  h1 {
+    text-align: center;
+  }
+
+  img {
+    align-self: center;
+    margin: 0px;
+    height: 90px;
+  }
+}
+
+.filtros{
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.box_adopcion {
+  padding: 20px;
+  border: solid 0.5px #000;
+  border-radius: 10px;
+  text-decoration: none;
+  .card_mascota {
+    text-decoration: none;
+  }
+}
