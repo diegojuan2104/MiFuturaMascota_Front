@@ -26,8 +26,8 @@ const DarEnAdopcion = () => {
     console.log(email_user);
     if (!email_user) {
       localStorage.clear();
-      history.push("/ingresar")
-      alert("Debes ingresar")
+      //history.push("/ingresar")
+      //alert("Debes ingresar")
     }
     update_pet(
       {
@@ -41,6 +41,8 @@ const DarEnAdopcion = () => {
   }, []);
 
   const [mascotas, setPets] = useState([]);
+
+  const [isDisable, setIsDisable] = useState(false);
   const [Mascota, update_pet] = useState({
     name: "",
     user_id: email_user,
@@ -51,6 +53,8 @@ const DarEnAdopcion = () => {
     filename: "",
     images: [],
     description: "",
+    age: "",
+    size: "",
   });
   const [error, setError] = useState(false);
 
@@ -60,9 +64,13 @@ const DarEnAdopcion = () => {
     bodyFormData.append("name", mascota.name);
     bodyFormData.append("animal_breed", mascota.breed);
     bodyFormData.append("animal_type", mascota.type);
-    bodyFormData.append("birth_date", mascota.fecha);
+    if (mascota.fecha != "") { bodyFormData.append("birth_date", mascota.fecha); }
     bodyFormData.append("location", mascota.city);
     bodyFormData.append("description", mascota.description);
+    bodyFormData.append("animal_size", mascota.size);
+    bodyFormData.append("age_aprox", mascota.age);
+    bodyFormData.append("description", mascota.description);
+    bodyFormData.append("isDisabled", isDisable ? 1 : 0);
     console.log(mascota);
 
     Object.values(mascota.images).forEach((x) =>
@@ -84,8 +92,8 @@ const DarEnAdopcion = () => {
         "Access-Control-Allow-Origin": "*",
       },
     })
-      .then((response) => alert(response.data))
-      .catch((error) => alert("se ha producido un error"));
+      .then((response) => console.log((response.data)))
+      .catch((error) => console.log(error));
     setPets([...mascotas, mascota]);
   };
 
@@ -109,19 +117,20 @@ const DarEnAdopcion = () => {
     if (
       name.trim() === "" ||
       user_id === "" ||
-      fecha.trim() === "" ||
       breed === "" ||
       type === "" ||
-      images === ""
+      images === "",
+      age === "",
+      size === ""
     ) {
       setError(true);
       console.log(Mascota);
+      alert("Todos los campos marcados con * son obligatorios")
       return;
     }
     console.log(Mascota);
     setError(false);
     Mascota.id = uuid();
-
     createPet(Mascota);
     update_pet({
       name: "",
@@ -147,6 +156,8 @@ const DarEnAdopcion = () => {
     filename,
     city,
     state,
+    age,
+    size
   } = Mascota;
   return (
     <Fragment>
@@ -157,6 +168,8 @@ const DarEnAdopcion = () => {
           <p className="alerta-error">todos los campos son oblilgatorios</p>
         ) : null}
         <form className="myform" onSubmit={create_pet}>
+
+          {/* NOMBRE */}
           <label>
             Nombre<span className="required">*</span>
           </label>
@@ -169,8 +182,9 @@ const DarEnAdopcion = () => {
             value={name}
           />
 
+          {/* FECHA DE NACIMIENTO */}
           <label>
-            Fecha nacimiento<span className="required">*</span>
+            Fecha nacimiento(Opcional)
           </label>
           <input
             type="date"
@@ -180,6 +194,8 @@ const DarEnAdopcion = () => {
             onChange={handleChange}
             value={fecha}
           />
+
+          {/* TIPO DE ANIMAL */}
           <label>
             Tipo de animal<span className="required">*</span>
           </label>
@@ -194,6 +210,9 @@ const DarEnAdopcion = () => {
             </option>
             <Select />
           </select>
+
+
+          {/* RAZA*/}
           <label>
             Raza de animal<span className="required">*</span>
           </label>
@@ -208,6 +227,8 @@ const DarEnAdopcion = () => {
             </option>
             <OptionsBreed id={type} />
           </select>
+
+          {/* DEPARTAMENTO */}
           <label>
             Departamento<span className="required">*</span>
           </label>
@@ -222,6 +243,8 @@ const DarEnAdopcion = () => {
             </option>
             <Select_depart />
           </select>
+
+          {/* CIUDAD O MUNICIPIO */}
           <label>
             Ciudad/Municipio<span className="required">*</span>
           </label>
@@ -237,6 +260,53 @@ const DarEnAdopcion = () => {
             <Opciones_ciudades id={state} />
           </select>
 
+          {/*EDAD*/}
+          <label>
+            Edad<span className="required">*</span>
+          </label>
+          <select
+            className="u-full-width"
+            value={age}
+            name="age"
+            onChange={handleChange}
+          >
+            <option defaultValue value="">
+              Seleccione una opción
+            </option>
+            <option value={1}>Cachorro</option>
+            <option value={2}>Adulto</option>
+            <option value={3}>Anciano</option>
+          </select>
+
+          {/*TAMAÑO*/}
+          <label>
+            Tamaño<span className="required">*</span>
+          </label>
+          <select
+            className="u-full-width"
+            value={size}
+            name="size"
+            onChange={handleChange}
+          >
+            <option defaultValue value="">
+              Seleccione una opción
+            </option>
+            <option value={1}>Pequeño</option>
+            <option value={2}>Mediano</option>
+            <option value={3}>Grande</option>
+          </select>
+
+
+          {/* DISCAPACIDDAD*/}
+
+          <label>
+            ¿Presenta alguna discapacidad?_
+            <input type="checkbox"
+              defaultChecked={isDisable}
+              onChange={() => setIsDisable(!isDisable)}
+            />
+          </label>
+          {/* DESCRIPCION */}
           <label>Descripción</label>
           <textarea
             className="u-full-width"

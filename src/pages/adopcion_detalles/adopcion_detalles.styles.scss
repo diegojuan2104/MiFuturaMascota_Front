@@ -5,16 +5,22 @@
   .foto_mascota_contacto {
     display: flex;
     flex-direction: column;
-    max-width: 400px; 
+    max-width: 300px; 
     max-height: 250px;
     width: 100%;
     h1{
         align-self: center;
     }
     img { 
+      max-width: 300px; 
+    max-height: 250px;
       border-radius: 5px;
       margin-bottom:15px;
       border: solid 0.5px #000;
+    }
+    button{
+      background-color: black;
+      color: white;
     }
   }
   .info{

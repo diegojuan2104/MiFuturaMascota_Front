@@ -1,7 +1,10 @@
 import axios from 'axios'
 
+import { URL } from "./vars";
+
+
 const clientAxios = axios.create({
-    baseURL: 'http://18.205.67.173:5001/'
+    baseURL: URL
 });
 
 export default clientAxios;

@@ -9,12 +9,14 @@ const initalState = {
   birth_date: "",
   breed: "",
   type: "",
-  url_img: "",
+  images: "",
   description: "",
-  city: "",
-  state: "",
   error: null,
   loading: false,
+  id:"",
+  animal_age_relation: "",
+  animal_size_relation:  "",
+  isDisabled:""
 };
 
 export default function (state = initalState, action) {
@@ -28,16 +30,21 @@ export default function (state = initalState, action) {
     case SAVE_INFO_PET_SUCCESS:
       return {
         ...state,
-        loading: false,
-        error: null,
+      
         name: action.payload.name,
         birth_date: action.payload.birth_date,
-        breed: action.payload.breed,
-        type: action.payload.type,
-        url_img: action.payload.url_img,
+        breed: action.payload.breed.name,
+        type: action.payload.type.name,
+        images: action.payload.images,
+        animal_age_relation: action.payload.animal_age_relation,
+        animal_size_relation:  action.payload.animal_size_relation,
+        loading: false,
+        error: null,
+        id: action.payload.id,
+      
+      
         description: action.payload.description,
-        city: action.payload.city,
-        state: action.payload.state
+        isDisabled : action.payload.isDisabled
       };
 
     case SAVE_INFO_PET_ERROR:

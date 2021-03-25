@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import "./adopcion_page.styles.scss";
 import MascotaCard from "../../components/mascota_card/mascota_card.component";
 import Select from "../../components/opciones_tipo_mascota/Select";
 import OptionsBreed from "../../components/opciones_raza_mascota/OptionsBreed";
 import Opciones_ciudades from "../../components/opciones_ciudades/Opciones_ciudades";
 import Select_depart from "../../components/opciones_departamentos/Select_depart";
-
 import { URL, } from "../../config/vars";
 import axios from "axios";
 import "./filtros.styles.scss";
+import { useHistory } from "react-router-dom";
+
 
 //Actions de Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +20,7 @@ const AdopcionPage = () => {
   //utilizar use distpach y te crea una función
   const dispatch = useDispatch();
 
+  const history = useHistory();
   //mandar llamar el action
   const savePetSelected = (pet) => dispatch(saveSelectedPetAction(pet));
 
@@ -33,10 +34,12 @@ const AdopcionPage = () => {
   const [mascotas, setMascotas] = useState([{}]);
   const [Flag, setFlag] = useState(false);
   let getData = async () => {
-    const result = await axios(URL+"/pets");
+    const result = await axios.get(URL + "/pets");
     console.log(result);
     setMascotas(result.data);
   };
+
+
   useEffect(() => {
     if (!Flag) {
       getData();
@@ -87,9 +90,23 @@ const AdopcionPage = () => {
 
   const { breed, atype, state, location } = filtros;
 
-  const mascotaSeleccionada = (mascota) => {
-    savePetSelected(mascota);
-  };
+
+
+
+
+  const mascotaSeleccionada = async (mascota) => {
+
+    await axios.get(URL + "/get-pet-details/" + mascota.id).then((result) => {
+      let newPet = result.data.pet;
+
+      console.log(newPet);
+      savePetSelected(newPet)
+      history.push("/adopcion/detalles_adopcion")
+    }
+
+    );
+
+  }
 
   return (
     <div>
@@ -164,7 +181,7 @@ const AdopcionPage = () => {
             <Link
               style={{ textDecoration: "none", color: "#000" }}
               className="card_mascota"
-              to="/adopcion/detalles_adopcion"
+        
               key={i}
               onClick={mascotaSeleccionada.bind(this, mascota)}
               className="col-md-6 col-sm-12 col-lg-6 col-xl-4"

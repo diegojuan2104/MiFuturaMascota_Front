@@ -133,9 +133,6 @@ const PerfilPage = () => {
                     <div className="button-box">
                         <button type="submit">ACTUALIZAR DATOS</button>
                     </div>
-                    <div className="button-box">
-                        <button type="submit">MIS MASCOTAS</button>
-                    </div>
                 </div>
             </form>
         </div>

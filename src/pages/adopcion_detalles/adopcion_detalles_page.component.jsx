@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import { URL } from "../../config/vars"
 import { Carousel, Item } from 'react-bootstrap';
@@ -20,43 +21,51 @@ const AdopocionDetalles = () => {
         "birth_date": "",
         "breed": "",
         "type": "",
-        "url_img": "",
-        "details": "",
-        "city": "",
-        "state": ""
+        "images": "",
+        "description": "",
+        "animal_age_relation": "",
+        "animal_size_relation": "",
+        "isDisabled": "",
+        "id": ""
+
     });
 
     useEffect(() => {
         if (!infoMascota) {
+
             actualizarMascota(pet);
+
             informacionMascotaCargada(true);
         }
     });
 
+
     return (
         <div className="box_adopcion_detalles row">
             <div className="foto_mascota_contacto col-md-12 col-sm-12 col-lg-6">
-                <h1>{mascota.name}</h1>
+                <div className="foto_container">
+                    <h1>{mascota.name}</h1>
+                    <div className="foto_mascota_contacto">
+                        {mascota.images.length > 1 ? <Carousel>
 
-                <Carousel>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src="https://ichef.bbci.co.uk/news/800/cpsprodpb/15665/production/_107435678_perro1.jpg"
-                            alt="First slide"
-                        />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                            className="d-block w-100"
-                            src="https://cnnespanol.cnn.com/wp-content/uploads/2020/07/200703104728-labrador-retriever-stock-super-169.jpg?quality=100&strip=info&w=940&h=530&crop=1"
-                            alt="Second slide"
-                        />
-                    </Carousel.Item>
-                </Carousel>
+                            {mascota.images.map((img, i) => (
+                                <Carousel.Item>
 
-                <img src={mascota.url_img} />
-                <FormContacto />
+                                    <img
+                                        className="d-block w-100"
+                                        src={img != null ? img.route : "https://cnnespanol.cnn.com/wp-content/uploads/2020/07/200703104728-labrador-retriever-stock-super-169.jpg?quality=100&strip=info&w=940&h=530&crop=1"}
+                                        alt="First slide"
+                                    />
+                                </Carousel.Item>
+                            ))}
+
+                        </Carousel> :
+                            <img src={mascota.images[0] != null ? mascota.images[0].route : null} />
+                        }
+
+                            <button className=" ">Estoy interesado!</button>
+                    </div>
+                </div>
             </div>
             <div className="info col-md-12 col-sm-12 col-lg-6">
                 <h2>Información general</h2>
@@ -68,7 +77,7 @@ const AdopocionDetalles = () => {
                     <p><strong>Ciudad: </strong>{mascota.city}</p>
                 </div>
                 <h2>Detalles</h2>
-                <p>{mascota.details}</p>
+                <p>{mascota.description}</p>
             </div>
 
 
