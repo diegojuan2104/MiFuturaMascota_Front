@@ -17,7 +17,7 @@ const AdopocionDetalles = () => {
 
     const [infoMascota, informacionMascotaCargada] = useState(false);
     const [mascota, actualizarMascota] = useState({
-        "name": "",
+        "name": "" ,
         "birth_date": "",
         "breed": "",
         "type": "",
