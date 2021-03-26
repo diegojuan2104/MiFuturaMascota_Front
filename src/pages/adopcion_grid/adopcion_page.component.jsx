@@ -48,7 +48,7 @@ const AdopcionPage = () => {
     return () => console.log("clean");
   }, []);
 
-  let busqueda_nueva = () => {
+  let busqueda_nueva = () =>{
     limpiarFiltros();
     getDataFiltered1();
   };
