@@ -50,7 +50,7 @@ const Header = () => {
               <Link className="option col-sm-12 col-md-2 justify-content-center" to="/ingresar">Ingresar</Link>
               <Link className="option col-sm-12 col-md-2 justify-content-center" to="/registrarse">Crea tu cuenta</Link>
               <Link className="option col-sm-12 col-md-2 justify-content-center" to="/dar_en_adopcion">Dar en adopción!</Link>
-              <Link className="option col-sm-12 col-md-2 justify-content-center" to="/mis_mascotas">Adoptar!</Link>
+              <Link className="option col-sm-12 col-md-2 justify-content-center" to="/adopcion">Adoptar!</Link>
             </div>
           )
         }

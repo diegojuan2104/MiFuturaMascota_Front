@@ -115,9 +115,16 @@ export function registerUserAction(user) {
     return async (dispatch) => {
       dispatch(registerUser());
       try {
+
+        let response;
         //Buscar desde la API
-        const response = await clientAxios.post("/register", user);
+        if(!user.isCorporation){
+           response = await clientAxios.post("/register", user);
+        }else{
+          response = await clientAxios.post("/register_corporation", user);
+        }
         console.log(response);
+    
         //Si todo sale bien actualizar el state
         dispatch(registerUserSuccess(user));
         Swal.fire("Correcto", "Usuario creado correctamente", "success");
