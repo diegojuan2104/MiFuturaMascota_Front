@@ -43,6 +43,23 @@ const MiMascotaDetalles = () => {
     console.log(response.data.Users_interested);
   };
 
+  let accept_interested = async (user) => {
+    let interesed = {
+      id_pet: mascota.id,
+      id_user: user.email,
+    };
+    console.log(interesed);
+
+    try {
+      let res = await axios.post(URL + "/accept_user", interesed);
+      console.log(res);
+      alert("Usuario aceptado");
+      getInterested();
+    } catch (error) {
+      console.log("No se pudo aceptar al usuario");
+    }
+  };
+
   return (
     <div className="box_adopcion_detalles row">
       <div className="foto_mascota_contacto col-md-12 col-sm-12 col-lg-6">
@@ -102,28 +119,57 @@ const MiMascotaDetalles = () => {
 
         <h2>Interesados</h2>
 
-        {interesados.length === 0
-          ? null
-          : <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Correo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {interesados.map((interesado) => (
+        {interesados.length === 0 ? null : (
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
                 <tr>
-                  <td>{interesado.name}</td>
-                  <td>{interesado.lastname}</td>
-                  <td>{interesado.email}</td>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Estado</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>}
+              </thead>
+              <tbody>
+                {interesados.map((interesado) => (
+                  <tr>
+                    <td>{interesado.name}</td>
+                    <td>{interesado.lastname}</td>
+                    <td>{interesado.email}</td>
+                    <td>
+                      {interesado.Estado_adopcion == -1 ? (
+                        <div>
+                          <button
+                            className=" "
+                            onClick={accept_interested.bind(this, interesado)}
+                          >
+                            Aceptar
+                          </button>
+                          {"  "}
+                          <button className=" ">Rechazar</button>
+                        </div>
+                      ) : (
+                        <div>
+                          {interesado.Estado_adopcion == 1 ? (
+                            <p>Candidato</p>
+                          ) : (
+                            <div>
+                              {interesado.Estado_adopcion == 0 ? (
+                                <p>Rechazado</p>
+                              ) : (
+                                <p>Aceptado</p>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

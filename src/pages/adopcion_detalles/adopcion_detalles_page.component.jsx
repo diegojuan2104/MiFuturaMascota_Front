@@ -32,9 +32,7 @@ const AdopocionDetalles = () => {
 
     useEffect(() => {
         if (!infoMascota) {
-
             actualizarMascota(pet);
-
             informacionMascotaCargada(true);
         }
     });

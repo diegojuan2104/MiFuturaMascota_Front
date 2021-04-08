@@ -1,5 +1,5 @@
 
-const URL = "http://3.234.243.144:5001"
+const URL = "http://3.236.22.134:5001"
 const URL2 = " http://127.0.0.1:5000"
 
 
