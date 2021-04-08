@@ -1,10 +1,6 @@
 
 const URL = "http://3.236.22.134:5001"
-<<<<<<< HEAD
 const URL2 = " http://127.0.0.1:5000"
-=======
-const URL2 = "http://3.236.22.134:5001"
->>>>>>> e06707c76ae8521a529542ae7796a28f7d305e3c
 
 
 const masco = [{

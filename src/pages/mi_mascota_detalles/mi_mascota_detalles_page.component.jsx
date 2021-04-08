@@ -49,14 +49,29 @@ const MiMascotaDetalles = () => {
       id_user: user.email,
     };
     console.log(interesed);
-
     try {
-      let res = await axios.post(URL + "/accept_user", interesed);
+      let res = await axios.post(URL + "/pet/accept_user", interesed);
       console.log(res);
       alert("Usuario aceptado");
       getInterested();
     } catch (error) {
       console.log("No se pudo aceptar al usuario");
+    }
+  };
+
+  let reject_interested = async (user) => {
+    let interesed = {
+      id_pet: mascota.id,
+      id_user: user.email,
+    };
+    console.log(interesed);
+    try {
+      let res = await axios.post(URL + "/pet/reject_user", interesed);
+      console.log(res);
+      alert("Usuario rechazado");
+      getInterested();
+    } catch (error) {
+      console.log("No se pudo rechazar al usuario");
     }
   };
 
@@ -146,7 +161,12 @@ const MiMascotaDetalles = () => {
                             Aceptar
                           </button>
                           {"  "}
-                          <button className=" ">Rechazar</button>
+                          <button
+                            className=" "
+                            onClick={reject_interested.bind(this, interesado)}
+                          >
+                            Rechazar
+                          </button>
                         </div>
                       ) : (
                         <div>
