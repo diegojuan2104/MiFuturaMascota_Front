@@ -30,6 +30,21 @@ const AdopocionDetalles = () => {
     id: "",
   });
 
+
+  const [data, actualizarTexto] = useState({
+    interest: "" 
+  });
+
+  const { interest } = data;
+  
+  const actualizarState = (e) => {
+    actualizarTexto({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
   useEffect(() => {
     if (!infoMascota) {
       actualizarMascota(pet);
@@ -83,13 +98,23 @@ const AdopocionDetalles = () => {
               />
             )}
 
+
+            {/* DESCRIPCION */}
+            <label>Descripción</label>
+            <textarea
+              placeholder="Describe tu interes en esta mascota"
+              className="u-full-width"
+              name="interest"
+              onChange={actualizarState}
+              value={interest}
+            ></textarea>
             {showButton ? <button
               className=" "
               onClick={express_interest}
             >
-              Estoy interesado!
+              Enviar Mensaje al dueño!
             </button> : null}
-            
+
           </div>
         </div>
       </div>

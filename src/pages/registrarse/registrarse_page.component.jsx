@@ -35,7 +35,8 @@ const RegistrarsePage = () => {
     city: "",
     nit:"",
     state: null,
-    city: null
+    city: null,
+    description: ""
   });
 
   const {
@@ -49,7 +50,8 @@ const RegistrarsePage = () => {
     city,
     address,
     nit,
-    phone
+    phone,
+    description
   } = usuario;
 
   const actualizarState = (e) => {
@@ -199,6 +201,16 @@ const RegistrarsePage = () => {
               onChange={actualizarState}
             />
           </div>
+
+            {/* DESCRIPCION */}
+            <label>Descripción</label>
+          <textarea
+            placeholder="Describe algo sobre ti, este campo lo podrán ver otras personas si deseas adoptar una mascota."
+            className="u-full-width"
+            name="description"
+            onChange={actualizarState}
+            value={description}
+          ></textarea>
 
           {!isCorporation ? (
             <div className="input-box">
