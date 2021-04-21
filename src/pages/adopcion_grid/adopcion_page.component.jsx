@@ -98,8 +98,8 @@ const AdopcionPage = () => {
 
     await axios.get(URL + "/get-pet-details/" + mascota.id).then((result) => {
       let newPet = result.data.pet;
-
-      console.log(newPet);
+      console.log("THIS");
+      console.log(result);
       savePetSelected(newPet)
       history.push("/adopcion/detalles_adopcion")
     }

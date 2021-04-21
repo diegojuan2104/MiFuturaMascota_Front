@@ -12,6 +12,9 @@ const Header = () => {
   const history = useHistory();
   const user = useSelector((state) => state.user);
 
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
   //utilizar use distpach y te crea una función
   const dispatch = useDispatch();
 
@@ -20,6 +23,8 @@ const Header = () => {
 
   let cerrarSesion = () => {
     logout();
+    forceUpdate();
+    console.log(user.autenticado);
     history.push("/ingresar");
   };
   return (

@@ -13,9 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 const AdopocionDetalles = () => {
   const pet = useSelector((state) => state.pet);
   const user = useSelector((state) => state.user);
+  console.log("now this");
+  console.log(pet);
 
   const [infoMascota, informacionMascotaCargada] = useState(false);
   const [showButton, changeShowButton] = useState(true);
+
 
   const [mascota, actualizarMascota] = useState({
     name: "",
@@ -28,15 +31,16 @@ const AdopocionDetalles = () => {
     animal_size_relation: "",
     isDisabled: "",
     id: "",
+    city: ""
   });
 
 
   const [data, actualizarTexto] = useState({
-    interest: "" 
+    interest: ""
   });
 
   const { interest } = data;
-  
+
   const actualizarState = (e) => {
     actualizarTexto({
       ...data,
@@ -44,20 +48,25 @@ const AdopocionDetalles = () => {
     });
   };
 
-
   useEffect(() => {
     if (!infoMascota) {
       actualizarMascota(pet);
       informacionMascotaCargada(true);
     }
   });
-
   //TODO: validar al cargar la página si el usuario ya está interesado y no mostrar el botón
 
   let express_interest = async () => {
+
+    if (data.interest === "") {
+      alert("Debe agregar un mensaje de interés");
+      return;
+    }
+
     let interesed = {
       id_pet: mascota.id,
       id_user: user.id_user,
+      message: data.interest,
     };
     console.log(interesed);
     try {
@@ -65,6 +74,10 @@ const AdopocionDetalles = () => {
       console.log(res);
       alert("Genial! pronto se pondrán en contacto contigo");
       changeShowButton(false);
+      actualizarTexto({
+        ...data,
+        interest: ""
+      });
     } catch (error) {
       console.log("Error al manifestar interés");
     }
@@ -99,21 +112,30 @@ const AdopocionDetalles = () => {
             )}
 
 
-            {/* DESCRIPCION */}
-            <label>Descripción</label>
-            <textarea
-              placeholder="Describe tu interes en esta mascota"
-              className="u-full-width"
-              name="interest"
-              onChange={actualizarState}
-              value={interest}
-            ></textarea>
-            {showButton ? <button
-              className=" "
-              onClick={express_interest}
-            >
-              Enviar Mensaje al dueño!
-            </button> : null}
+
+
+            {showButton ?
+
+              <div>
+
+                {/* DESCRIPCION */}
+                <label>Interés</label>
+                <textarea
+                  placeholder="Describe tu interes en esta mascota"
+                  className="u-full-width"
+                  name="interest"
+                  onChange={actualizarState}
+                  value={interest}
+                ></textarea>
+                <button
+                  className=" "
+                  onClick={express_interest}
+                >
+                  Enviar Mensaje al dueño!
+                    </button>
+              </div>
+
+              : null}
 
           </div>
         </div>
@@ -134,12 +156,8 @@ const AdopocionDetalles = () => {
             {mascota.type}
           </p>
           <p>
-            <strong>Departamento: </strong>
-            {mascota.state}
-          </p>
-          <p>
             <strong>Ciudad: </strong>
-            {mascota.city}
+            {mascota.city.name}
           </p>
         </div>
         <h2>Detalles</h2>

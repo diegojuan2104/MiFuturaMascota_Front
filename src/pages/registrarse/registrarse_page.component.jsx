@@ -70,6 +70,7 @@ const RegistrarsePage = () => {
 
     if (!isCorporation) {
       new_usuario = {
+        auto_description: description,
         isCorporation,
         email,
         password,
@@ -93,6 +94,7 @@ const RegistrarsePage = () => {
     } else {
 
       new_usuario = {
+        auto_description: description,
         email,
         password,
         name_corporation: nombres,
@@ -144,7 +146,7 @@ const RegistrarsePage = () => {
         isCorporation:false
       });
 
-      //history.push("/ingresar");
+      history.push("/ingresar");
     } catch (error) {
       alert("El email ingresado ya está registrado");
     }
@@ -202,15 +204,6 @@ const RegistrarsePage = () => {
             />
           </div>
 
-            {/* DESCRIPCION */}
-            <label>Descripción</label>
-          <textarea
-            placeholder="Describe algo sobre ti, este campo lo podrán ver otras personas si deseas adoptar una mascota."
-            className="u-full-width"
-            name="description"
-            onChange={actualizarState}
-            value={description}
-          ></textarea>
 
           {!isCorporation ? (
             <div className="input-box">
@@ -227,6 +220,17 @@ const RegistrarsePage = () => {
               />
             </div>
           ) : null}
+
+          
+            {/* DESCRIPCION */}
+            <label>Descripción</label>
+          <textarea
+            placeholder="Describe algo sobre ti, este campo lo podrán ver otras personas si deseas adoptar una mascota."
+            className="u-full-width"
+            name="description"
+            onChange={actualizarState}
+            value={description}
+          ></textarea>
 
           {isCorporation ? (
 
@@ -248,7 +252,7 @@ const RegistrarsePage = () => {
 
               <div className="input-box">
                 <label htmlFor="">
-                  Departmento<span>*</span>
+                  Departamento<span>*</span>
                 </label>
                 <select
                   className="u-full-width"

@@ -1,6 +1,6 @@
 
-const URL = "http://3.236.22.134:5001"
-const URL2 = " http://127.0.0.1:5000"
+const URL = "http://34.204.199.39:5001"
+const URL2 = "http://127.0.0.1:5000"
 
 
 const masco = [{

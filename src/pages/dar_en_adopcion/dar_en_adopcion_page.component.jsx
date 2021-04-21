@@ -273,7 +273,7 @@ const DarEnAdopcion = () => {
             <option defaultValue value="">
               Seleccione una opción
             </option>
-            <option value={1}>Cachorro</option>
+            <option value={1}>Crío</option>
             <option value={2}>Adulto</option>
             <option value={3}>Anciano</option>
           </select>

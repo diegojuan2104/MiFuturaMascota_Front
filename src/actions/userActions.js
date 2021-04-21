@@ -22,10 +22,11 @@ export function loginUserAction(user) {
     try {
       //Buscar desde la API
       const response = await clientAxios.post("/login", user);
+      console.log(response);
       user = {
         token: response.data.access_token,
         id_user: response.data.user_id,
-        autenticado: true,
+        autenticado: false,
       };
 
       //Si todo sale bien actualizar el state
@@ -105,8 +106,6 @@ const logoutUserError = (state) => ({
   type: USER_LOGOUT_ERROR,
   payload: state,
 });
-
-
 
 
 //_______REGISTER___________

@@ -16,7 +16,8 @@ const initalState = {
   id:"",
   animal_age_relation: "",
   animal_size_relation:  "",
-  isDisabled:""
+  isDisabled:"",
+  city:""
 };
 
 export default function (state = initalState, action) {
@@ -41,7 +42,7 @@ export default function (state = initalState, action) {
         loading: false,
         error: null,
         id: action.payload.id,
-      
+        city: action.payload.city,
       
         description: action.payload.description,
         isDisabled : action.payload.isDisabled

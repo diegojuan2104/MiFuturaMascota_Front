@@ -33,7 +33,7 @@ export default function (state = initalState, action) {
         error: null,
         token: action.payload.token,
         id_user: action.payload.id_user,
-        autenticado: action.payload.autenticado,
+        autenticado: true,
       };
 
     case SAVE_INFO_USER_ERROR:
@@ -74,6 +74,7 @@ export default function (state = initalState, action) {
         ...state,
         loading: false,
         error: null,
+        autenticado: false,
       };
 
     case USER_LOGOUT_ERROR:
